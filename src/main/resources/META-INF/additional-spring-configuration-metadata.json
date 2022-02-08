@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "app.datasource.main.username",
+      "type": "java.lang.String",
+      "description": "Description for app.datasource.main.username."
+    },
+    {
+      "name": "rapid.vit.jwt.secretKey",
+      "type": "java.lang.String",
+      "description": "Description for rapid.vit.jwt.secretKey."
+    }
+  ] }
