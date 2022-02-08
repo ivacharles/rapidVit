@@ -8,8 +8,6 @@
 * [Sign in]()
 * [limit signup user access to regular user]()
 
-For further information, please email me @ ilesperance24@gmail.com / [Iva Lesperance Charles](http://www.ivaoy.com)
-
 ### The following are technologies used to build this REST API
 * [Maven]()
 * [Spring Boot]()
