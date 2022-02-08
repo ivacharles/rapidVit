@@ -2,7 +2,12 @@
 ## A RESTFul API that let users post items for sale, advertise their services, and more
 
 
-### An E-commerce application that let users post items for sales, advertise their services, and more.
+### List of things done for now.
+* [Sign up]()
+* [Email to confirm your account]()
+* [Sign in]()
+* [limit signup user access to regular user]()
+
 For further information, please email me @ ilesperance24@gmail.com / [Iva Lesperance Charles](http://www.ivaoy.com)
 
 ### The following are technologies used to build this REST API
