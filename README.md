@@ -19,4 +19,7 @@
 * [Springfox-Swagger]()
 * [More...]()
 
+#Here is the use case for the rapidVit app
+![alt text](http://url/to/img.png)
+
 
