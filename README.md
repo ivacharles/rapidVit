@@ -7,6 +7,7 @@
 * [Email to confirm your account]()
 * [Sign in]()
 * [limit signup user access to regular user]()
+* [CRUD for managing the posting ]()
 
 ### The following are technologies used to build this REST API
 * [Maven]()
