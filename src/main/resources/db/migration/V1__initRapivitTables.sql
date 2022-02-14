@@ -45,3 +45,51 @@ CREATE TABLE user_email_token_confirmation (
      CONSTRAINT pk_email_token_conf PRIMARY KEY(token_id),
      CONSTRAINT FK_email_token_conf FOREIGN KEY (user_id) REFERENCES rapidvit_user (user_id)
 );
+
+CREATE TABLE rapidvit_listing(
+    listingID                      BIGSERIAL    NOT NULL,
+    listingOwnerID                 BIGINT       NOT NULL,
+    listingTitle                   VARCHAR(255) NOT NULL,
+    listingCategory                VARCHAR(100) NOT NULL,
+    listingSubCategory             VARCHAR(100) NOT NULL,
+    listingCity                    VARCHAR(125) NOT NULL,
+    listingDescription             VARCHAR(500) NOT NULL,
+    listingPrice                   DECIMAL,
+    isListingVerified              BOOLEAN,
+    listingCreatedDate             TIMESTAMP    NOT NULL,
+    listingUpdatedDate             TIMESTAMP,
+    listingPostedDate              TIMESTAMP,
+
+    listingHousingAvailableOn      TIMESTAMP,
+    listingHousingSize             BIGINT,
+    listingHousingType             VARCHAR(100),
+    listingHousingNumberOfBedroom  VARCHAR(100),
+    listingHousingNumberOfBathroom VARCHAR(100),
+    listingHousingHasParking       BOOLEAN,
+
+    listingJobType                 VARCHAR(100),
+    listingJobTitle                VARCHAR(100),
+    listingJobCompanyName          VARCHAR(100),
+
+    listingSaleMake                VARCHAR(100),
+    listingSaleModel               VARCHAR(100),
+    listingSaleSize                VARCHAR(100),
+    listingSaleCondition           VARCHAR(100),
+
+    listingEventNumberOfTicket     VARCHAR(100),
+    listingEventDate               TIMESTAMP,
+    listingEventVenue              VARCHAR(120),
+
+    CONSTRAINT pk_rapidvit_listing PRIMARY KEY(listingID),
+    CONSTRAINT fk_rapidvit_listing FOREIGN KEY (listingOwnerID) REFERENCES rapidvit_user (user_id)
+);
+
+CREATE TABLE rapidvit_listing_img (
+     listingPhotoID BIGSERIAL NOT NULL,
+     listingID BIGINT NOT NULL,
+     listingPhotoName VARCHAR(255) NOT NULL,
+     listingPhotoPath VARCHAR(255) NOT NULL,
+
+     CONSTRAINT pk_rapidvit_listing_img PRIMARY KEY(listingPhotoID),
+     CONSTRAINT FK_rapidvit_listing_img FOREIGN KEY (listingID) REFERENCES rapidvit_listing(listingID)
+);

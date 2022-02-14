@@ -1,6 +1,7 @@
 package com.rapid.vit.email;
 
 import com.rapid.vit.appUser.registration.AppUserResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -13,6 +14,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Optional;
 
 @RestController
+@SecurityRequirement(name = "email-api")
 @RequestMapping("/api/v1/to/send/email")
 public class AmazonSimpleEmailServiceController {
     private final AmazonSESService amazonSESService;

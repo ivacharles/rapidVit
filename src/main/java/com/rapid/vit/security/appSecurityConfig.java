@@ -12,6 +12,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -49,22 +50,25 @@ public class appSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeHttpRequests()
                 .antMatchers("/user/signup").permitAll()
                 .antMatchers("/user/confirm").permitAll()
-                .antMatchers("/api/v1/to/send/email/to").permitAll()
+                .antMatchers("/listing/**/all").permitAll()
+                .antMatchers("/listing/all").permitAll()
                 .anyRequest().authenticated();
         http.addFilterBefore(new JwtUsernameAndPasswordAuthorizationFilter(jwtConfig), JwtUsernameAndPasswordAuthenticationFilter.class);
 
     }
 
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        // Allow swagger to be accessed without authentication
-//        web.ignoring().antMatchers("/swagger-ui.html")
-//                .antMatchers("/v3/api-docs")
-//                .antMatchers("/swagger-resources/**")
-//                .antMatchers("/configuration/**")
-//                .antMatchers("/webjars/**")
-//                .antMatchers("/public");
-//    }
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        // Allow swagger to be accessed without authentication
+        web.ignoring()
+                .antMatchers("/swagger-ui/**")
+                .antMatchers("/swagger-ui.html")
+                .antMatchers("/v3/api-docs/**")
+                .antMatchers("/swagger-resources/**")
+                .antMatchers("/configuration/**")
+                .antMatchers("/webjars/swagger-ui/**")
+                .antMatchers("/public");
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

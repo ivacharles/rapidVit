@@ -45,6 +45,7 @@ public class AppUserController {
         return userDetailService.setUserToSuperUserRole(appUserRoleForm)
                 .orElseThrow(() -> new HttpServerErrorException(HttpStatus.BAD_REQUEST, "user has super role set already"));
     }
+
     @GetMapping("/all")
     @PreAuthorize("hasRole('ROLE_SUPER_USER')")
     public List<AppUserDetail> getAllUsers(){

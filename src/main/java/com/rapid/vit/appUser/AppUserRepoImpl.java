@@ -20,7 +20,6 @@ import java.util.Optional;
 public class AppUserRepoImpl implements AppUserRepo{
     private static final Logger LOGGER = LoggerFactory.getLogger(AppUserRepoImpl.class);
 
-
     private final JdbcTemplate jdbcTemplate;
     private final AppUserRoleRepoImpl userRoleRepo;
 

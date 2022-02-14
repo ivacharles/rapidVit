@@ -67,42 +67,29 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!--Documentation with spring doc / swagger and override the security (JWT)-->
-		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.5</version>
-		</dependency>
-
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 		</dependency>
+		<!--Documentation with spring doc / swagger and override the security (JWT)-->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.6.6</version>
+		</dependency>
+
 		<!--This dependency helps ignoring @AuthenticationPrincipal in case its used on REST Controllers.-->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-security</artifactId>
-			<version>1.6.5</version>
+			<version>1.6.6</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
-
-
-
-	<!--send email -->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-mail</artifactId>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>com.amazonaws</groupId>-->
-<!--			<artifactId>aws-java-sdk</artifactId>-->
-<!--			<version>1.11.327</version>-->
-<!--		</dependency>-->
 
 		<dependency>
 			<groupId>com.sun.mail</groupId>

@@ -158,13 +158,13 @@ public class AppUserRegistrationService {
                 "      <td width=\"10\" valign=\"middle\"><br></td>\n" +
                 "      <td style=\"font-family:Helvetica,Arial,sans-serif;font-size:19px;line-height:1.315789474;max-width:560px\">\n" +
                 "        \n" +
-                "            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Hi " + name + ", please confirm your account.</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> Thank you for registering. Please click on the below link to activate your account: </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> <a href=\"" + link + "\">Activate Now</a> </p></blockquote>\n Link will expire in 15 minutes. <p>See you soon</p>" +
+                "            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">To continue creating your RapidVit Account, you must confirm your email address. To confirm your email address, please click on the link below, or copy and paste the entire link into your browser.</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Please note that this confirmation link expires in 24 hours and may require your immediate attention if you wish to access your online account in the future.</p>"+
                 "        \n"+ link+
                 "      </td>\n" +
                 "      <td width=\"10\" valign=\"middle\"><br></td>\n" +
                 "    </tr>\n" +
                 "    <tr>\n" +
-                "      <td height=\"30\"><br></td>\n" +
+                "      <td height=\"30\"><b>PLEASE DO NOT REPLY TO THIS MESSAGE </b></td>\n" +
                 "    </tr>\n" +
                 "  </tbody></table><div class=\"yj6qo\"></div><div class=\"adL\">\n" +
                 "\n" +
@@ -200,7 +200,7 @@ public class AppUserRegistrationService {
         String link = "http://localhost:8080/user/confirm?token="+generatedToken;
 
         LOGGER.info("email token confirmation link is "+link);
-        String subject = "Account confirmation email";
+        String subject = "Email confirmation instructions";
 
         try {
             amazonSESService.sendEmail("lespiva7891@yahoo.es", "Rapidvit", appUserDetail.getUsername(), subject, emailHtmlBody(appUserDetail.getUserFName(), link));
