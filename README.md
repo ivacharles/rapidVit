@@ -19,7 +19,7 @@
 * [Springfox-Swagger]()
 * [More...]()
 
-#Here is the use case for the rapidVit app
-![alt text](http://url/to/img.png)
+# Here is the use case for the rapidVit app
+![alt text](https://github.com/ivacharles/rapidVit/blob/master/src/main/resources/rapidvit-use-case.drawio.png)
 
 
