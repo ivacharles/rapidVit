@@ -19,6 +19,7 @@ import java.util.Optional;
 public class ListingRepoImpl implements ListingRepo{
 
     private final JdbcTemplate jdbcTemplate;
+    private final String listingPictSQL = "SELECT * FROM rapidvit_listing_img WHERE listingID =?";
 
     @Autowired
     public ListingRepoImpl(JdbcTemplate jdbcTemplate) {
@@ -129,13 +130,17 @@ public class ListingRepoImpl implements ListingRepo{
     @Override
     public List<Listing> getAllListing() {
         String listingSQL = "SELECT * FROM rapidvit_listing";
+        List<Listing> listings = jdbcTemplate.query(listingSQL, new ListingRowMapper());
+        if(listings.size()>0) {
+            listings.forEach(listing ->
+                    listing.setListingPhotos(jdbcTemplate.query(listingPictSQL, new ListingPhotoRowMapper(), listing.getListingID())));
+        }
         return jdbcTemplate.query(listingSQL, new ListingRowMapper());
     }
 
     @Override
     public List<Listing> getAllListingByCategory(String category) {
         String listingSQL = "SELECT * FROM rapidvit_listing WHERE listingCategory =?";
-        String listingPictSQL = "SELECT * FROM rapidvit_listing_img WHERE listingID =?";
 
         List<Listing> listings = jdbcTemplate.query(listingSQL, new ListingRowMapper(),category);
         if(listings.size()>0) {
@@ -153,12 +158,11 @@ public class ListingRepoImpl implements ListingRepo{
     @Override
     public List<Listing> getAllListingByUserID(Long listingOwnerID) {
         String listingSQL = "SELECT * FROM rapidvit_listing WHERE listingOwnerID =?";
-        String listingPhotoSQL = "SELECT * FROM rapidvit_listing_img WHERE listingID =?";
 
         List<Listing> listings = jdbcTemplate.query(listingSQL, new ListingRowMapper(),listingOwnerID);
         if(listings.size()>0) {
             listings.forEach(listing ->
-                    listing.setListingPhotos(jdbcTemplate.query(listingPhotoSQL, new ListingPhotoRowMapper(), listing.getListingID())));
+                    listing.setListingPhotos(jdbcTemplate.query(listingPictSQL, new ListingPhotoRowMapper(), listing.getListingID())));
         }
         return listings;
     }

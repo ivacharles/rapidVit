@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 @Configuration
 public class SpringDocConfig {
@@ -28,7 +29,7 @@ public class SpringDocConfig {
                         .version("v0.0.1")
                         .license(new License().name("Apache 2.0").url("https://springdoc.org")))
                 .addSecurityItem(
-                        new SecurityRequirement().addList("bearer-jwt", Arrays.asList("read", "write")));
+                        new SecurityRequirement().addList("bearer-jwt", Collections.singletonList("read")));
     }
 }
 

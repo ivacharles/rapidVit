@@ -11,11 +11,15 @@ import java.sql.SQLException;
 public class ListingPhotoRowMapper implements RowMapper<ListingPhoto> {
     @Override
     public ListingPhoto mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new ListingPhoto(
-                rs.getLong("listingPhotoID"),
-                rs.getLong("listingID"),
-                rs.getString("listingPhotoName"),
-                rs.getString("listingPhotoPath")
-        );
+        Long pictID =rs.getLong("listingPhotoID");
+        Long pictOwnerID =rs.getLong("listingID");
+        String pictName = rs.getString("listingPhotoName");
+        String pictPathName = rs.getString("listingPhotoPath");
+        ListingPhoto listingPhoto = new ListingPhoto();
+        listingPhoto.setListingPhotoID(pictID);
+        listingPhoto.setListingID(pictOwnerID);
+        listingPhoto.setListingPhotoName(pictName);
+        listingPhoto.setListingPhotoPath(pictPathName);
+        return listingPhoto;
     }
 }

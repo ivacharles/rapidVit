@@ -37,7 +37,7 @@ public class ListingController {
     }
 
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.FOUND)
+    @ResponseStatus(HttpStatus.OK)
     public List<Listing> getAllListings() {
         return listingService.getAllListings();
     }

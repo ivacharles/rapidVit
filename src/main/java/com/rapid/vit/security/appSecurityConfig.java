@@ -36,7 +36,6 @@ public class appSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         JwtUsernameAndPasswordAuthenticationFilter usernameAndPasswordAuthenticationFilter = new
                 JwtUsernameAndPasswordAuthenticationFilter(jwtConfig, authenticationManagerBean());
         usernameAndPasswordAuthenticationFilter.setFilterProcessesUrl("/user/signin");
@@ -46,7 +45,7 @@ public class appSecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         //add verify login credential filter
         http.addFilter(usernameAndPasswordAuthenticationFilter);
-//allow the entry points
+        //allow the entry points
         http.authorizeHttpRequests()
                 .antMatchers("/user/signup").permitAll()
                 .antMatchers("/user/confirm").permitAll()
@@ -54,7 +53,6 @@ public class appSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/listing/all").permitAll()
                 .anyRequest().authenticated();
         http.addFilterBefore(new JwtUsernameAndPasswordAuthorizationFilter(jwtConfig), JwtUsernameAndPasswordAuthenticationFilter.class);
-
     }
 
     @Override

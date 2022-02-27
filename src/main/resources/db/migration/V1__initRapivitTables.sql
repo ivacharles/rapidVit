@@ -76,7 +76,7 @@ CREATE TABLE rapidvit_listing(
     listingSaleSize                VARCHAR(100),
     listingSaleCondition           VARCHAR(100),
 
-    listingEventNumberOfTicket     VARCHAR(100),
+    listingEventNumberOfTicket     BIGINT,
     listingEventDate               TIMESTAMP,
     listingEventVenue              VARCHAR(120),
 

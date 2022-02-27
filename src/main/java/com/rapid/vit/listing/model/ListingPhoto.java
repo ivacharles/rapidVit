@@ -10,13 +10,13 @@ public class ListingPhoto {
         this.listingPhotoName = listingPhotoName;
         this.listingPhotoPath = listingPhotoPath;
     }
-
-    public ListingPhoto(Long listingPhotoID, Long listingID, String listingPhotoName, String listingPhotoPath) {
-        this.listingPhotoID = listingPhotoID;
-        this.listingID = listingID;
-        this.listingPhotoName = listingPhotoName;
-        this.listingPhotoPath = listingPhotoPath;
-    }
+    public ListingPhoto(){}
+//    public ListingPhoto(Long listingPhotoID, Long listingID, String listingPhotoName, String listingPhotoPath) {
+//        this.listingPhotoID = listingPhotoID;
+//        this.listingID = listingID;
+//        this.listingPhotoName = listingPhotoName;
+//        this.listingPhotoPath = listingPhotoPath;
+//    }
 
     public Long getListingPhotoID() {
         return listingPhotoID;
