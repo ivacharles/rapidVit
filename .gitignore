@@ -33,6 +33,6 @@ build/
 .vscode/
 
 ### App Setup ###
-application.properties
+#application.properties
 
 src/frontend
