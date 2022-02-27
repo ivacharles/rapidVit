@@ -34,5 +34,5 @@ build/
 
 ### App Setup ###
 application.properties
-./src/frontend
+
 src/frontend
