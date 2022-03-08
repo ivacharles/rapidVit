@@ -1,14 +1,18 @@
-import React, {useRef, useState, useEffect, useContext} from "react";
+import React, {useRef, useState, useEffect} from "react";
 import {Button, Container, Form} from "react-bootstrap";
-import {NavLink} from "react-router-dom";
-import AuthContext from "../context/AuthProvider";
-import axios from "../calls/axios";
+import {NavLink, useNavigate, useLocation} from "react-router-dom";
+import userAuth from "../context/useAuth";
+import axios from "axios";
 
-const LOGIN_URL = "/user/signin";
+const LOGIN_URL = "user/signin";
+const USER_DASHBOARD ="/user-dashboard";
 
 function SigninPage() {
+    const {setAuth} = userAuth();
 
-    const {setAuth} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const locationFrom = location.state?.from.pathname || USER_DASHBOARD;
 
     const userRef = useRef(); //this is to set focus where error in the form
     const errorRef = useRef();//this is to set focus on the error msg for user to see
@@ -28,12 +32,6 @@ function SigninPage() {
 
 
     const handleChange = async (e) => {
-        console.log("----------------------test-------------------");
-        console.log("username: "+username);
-        console.log("pwd: "+password);
-        const userCredential = JSON.stringify({username, password});
-        console.log("credential: "+userCredential);
-
         e.preventDefault();
         try {
             const response = await axios.post(
@@ -44,20 +42,18 @@ function SigninPage() {
                     withCredentials: true
                 }
             );
-            const token = response?.data;
+            const token = response?.data.userMessage;
             setAuth({username,password, token})
-            console.log("----------------------response-------------------");
-            console.log(response.data);
             setUsername("");
             setPassword("");
+            navigate(locationFrom, {replace: true});
         } catch (error) {
             if(!error?.response){
-                console.log("----------------------response-------------------");
                 console.log(error?.response)
                 setErrorMsg("No Server Response");
-            }else if(error?.response?.status === 403){
-                setErrorMsg("Unauthorized");
             }else if(error?.response?.status === 401){
+                setErrorMsg("Unauthorized");
+            }else if(error?.response?.status === 400){
                 setErrorMsg("All fields are required");
             }else {
                 setErrorMsg("Login Failed");
@@ -107,11 +103,12 @@ function SigninPage() {
                     Sign in
                 </Button>
                 <NavLink to="/signup" className="nav-link  text-info text-end fw-bolder text-nowrap">
-                    <span className={"text-dark"}>Don't have an account?</span>
+                    <span className={"text-dark"}>Don't have an account? </span>
                     Register Now
                 </NavLink>
             </Form>
         </Container>
     );
 }
+
 export default SigninPage;

@@ -10,7 +10,8 @@ CREATE TABLE rapidvit_user(
     isUserActivated BOOLEAN,
     user_account_created_date TIMESTAMP,
 
-    CONSTRAINT pk_rapidvit_user PRIMARY KEY(user_id)
+    CONSTRAINT pk_rapidvit_user PRIMARY KEY(user_id),
+    CONSTRAINT uk_rapidvit_user UNIQUE (user_email_address, user_phone_number)
 );
 
 CREATE TABLE rapidvit_role(

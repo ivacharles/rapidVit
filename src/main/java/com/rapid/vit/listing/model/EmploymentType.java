@@ -6,7 +6,7 @@ import java.util.function.Supplier;
 public enum EmploymentType {
     FullTime("Full Time"),
     PartTime("Part Time"),
-    InternShip("Intern Ship"),
+    InternShip("Internship"),
     Contract("Contract");
 
     private final String employmentTypeString;

@@ -14,6 +14,14 @@
   width:400px;
 }
 
+#listing-container{
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width:800px;
+}
+
 #btn-special-rapidvit-color{
   color: #000000;
   background-color: #dddd;
@@ -34,6 +42,15 @@ button#uncontrolled-tab-example-tab-listings{
   color: #000000;
 }
 button#uncontrolled-tab-example-tab-account-setting{
+  font-weight: bold;
+  color: #000000;
+}
+
+button#uncontrolled-sub-tab-example-tab-create-listings{
+  font-weight: bold;
+  color: #000000;
+}
+button#uncontrolled-sub-tab-example-tab-modify-listing{
   font-weight: bold;
   color: #000000;
 }
